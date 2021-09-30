@@ -8,7 +8,7 @@ You may also have a test project depending on the options selected.
 
 The generated Main method is the entry point for the function's process.  The main method wraps the function handler in a wrapper that the bootstrap can work with.  Then it instantiates the bootstrap and sets it up to call the function handler each time the AWS Lambda function is invoked.  After the set up the bootstrap is started.
 
-The generated function handler is a simple method accepting a string argument that returns the uppercase equivalent of the input string. Replace the body of this method, and parameters, to suit your needs. 
+The generated function handler is a simple method accepting a string argument that returns the uppercase equivalent of the input string. Replace the body of this method, and parameters, to suit your needs.
 
 ## Here are some steps to follow from Visual Studio:
 
@@ -44,8 +44,8 @@ Deploy function to AWS Lambda
 
 ## Improve Cold Start
 
-.NET Core 3.1 and newer has a feature called ReadyToRun. When you compile your .NET Core application you can enable ReadyToRun 
-to prejit the .NET assemblies. This saves the .NET Core runtime from doing a lot of work during startup converting the 
+.NET Core 3.1 and newer has a feature called ReadyToRun. When you compile your .NET Core application you can enable ReadyToRun
+to prejit the .NET assemblies. This saves the .NET Core runtime from doing a lot of work during startup converting the
 assemblies to a native format. ReadyToRun must be used on the same platform as the platform that will run the .NET application. In Lambda's case
 that means you have to build the Lambda package bundle in a Linux environment. To enable ReadyToRun edit the aws-lambda-tools-defaults.json
 file to add /p:PublishReadyToRun=true to the msbuild-parameters parameter.
@@ -76,4 +76,9 @@ To configure the test tool for custom runtimes follow these steps:
     }
   }
 }
+```
+
+## Test
+```
+aws lambda invoke --function-name Custom60 --payload '"foo"' response.json
 ```

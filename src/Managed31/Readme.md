@@ -42,3 +42,8 @@ Deploy function to AWS Lambda
     cd "Managed31"
     dotnet lambda deploy-function
 ```
+
+Test
+```
+aws lambda invoke --function-name Managed31 --payload '"foo"' response.json
+```
